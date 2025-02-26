@@ -57,3 +57,6 @@ Request Body Example:
   "sentiment": "positive"
 }
 ```
+
+### 6. Deployment on Render
+The Elastiq frontend is deployed on Render.
