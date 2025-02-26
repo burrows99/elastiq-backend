@@ -15,7 +15,7 @@ Follow the steps below to build and run the Elastiq backend using Docker.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repository/elastiq-backend.git
+git clone https://github.com/burrows99/elastiq-backend.git
 cd elastiq-backend
 ```
 
