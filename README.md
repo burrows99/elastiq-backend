@@ -59,4 +59,56 @@ Request Body Example:
 ```
 
 ### 6. Deployment on GCP Compute Engine
-The Elastiq frontend is deployed on GCP Compute Engine.
+Steps:
+* Set the project ID
+```bash
+gcloud config set project natural-oxygen-452115-h7
+```
+* Enable APIs, if not done already.
+```bash
+gcloud services enable compute.googleapis.com
+```
+* Add firewall for access to port 8000, if not done already:
+```bash
+gcloud compute firewall-rules create allow-tcp-8000 \
+  --allow tcp:8000 \
+  --network default \
+  --direction INGRESS \
+  --priority 1000 \
+  --source-ranges 0.0.0.0/0 \
+  --target-tags http-server
+```
+* Create bare metal vm instance:
+```bash
+gcloud compute instances create elastiq-backend-instance \
+  --zone=us-central1-a \
+  --machine-type=n1-standard-1 \
+  --image-family=debian-11 \
+  --image-project=debian-cloud
+```
+* Connect to the VM through SSH
+```bash
+gcloud compute ssh elastiq-backend-instance --zone=us-central1-a
+```
+* Execute the following commands:
+```bash
+sudo apt-get update
+sudo apt install git -y
+sudo apt-get install -y docker.io
+```
+* Setup repo
+```bash
+git clone https://github.com/burrows99/elastiq-backend.git
+cd elastiq-backend
+```
+* Build Image
+```bash
+docker build -f Dockerfile -t elastiq-backend-docker .
+```
+* Run container
+```bash
+docker run -d -p 8000:8000 elastiq-backend-docker
+```
+* See the external IP from the UI and use http://<EXTERNAL_IP>:8000 to access backend.
+     
+
