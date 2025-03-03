@@ -54,7 +54,7 @@ POST https://elastiq-backend.onrender.com/classify_review
 Request Body Example:
 ```json
 {
-  "sentiment": "positive"
+  "review": "This is a very good movie."
 }
 ```
 
