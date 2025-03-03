@@ -42,7 +42,7 @@ http://localhost:8000
 Deployed server can be accessed it at:
 
 ```bash
-https://elastiq-backend.onrender.com/
+[https://elastiq-backend.onrender.com/](http://35.226.217.146:8000/classify_review)
 ```
 
 ### 5. Sentiment Analysis with Cohere API
@@ -58,5 +58,5 @@ Request Body Example:
 }
 ```
 
-### 6. Deployment on Render
-The Elastiq frontend is deployed on Render.
+### 6. Deployment on GCP Compute Engine
+The Elastiq frontend is deployed on GCP Compute Engine.
